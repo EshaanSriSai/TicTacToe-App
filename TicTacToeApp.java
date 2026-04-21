@@ -2,22 +2,26 @@ import java.util.Scanner;
 
 public class TicTacToeApp {
 
-    // Method to take user input
     public static int getUserInput() {
         Scanner sc = new Scanner(System.in);
+        System.out.print("Enter slot (1-9): ");
+        return sc.nextInt();
+    }
 
-        System.out.print("Enter a slot number (1-9): ");
-        int slot = sc.nextInt();
-
-        return slot;
+    // UC4 method
+    public static int[] convertSlotToPosition(int slot) {
+        int row = (slot - 1) / 3;
+        int col = (slot - 1) % 3;
+        return new int[]{row, col};
     }
 
     public static void main(String[] args) {
 
-        // Call method
-        int userSlot = getUserInput();
+        int slot = getUserInput();
 
-        // Print result (to verify)
-        System.out.println("You selected slot: " + userSlot);
+        int[] position = convertSlotToPosition(slot);
+
+        System.out.println("Row: " + position[0]);
+        System.out.println("Col: " + position[1]);
     }
 }
